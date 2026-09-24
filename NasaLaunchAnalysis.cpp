@@ -63,6 +63,19 @@ int main() {
 		}
 	}
 	
+	    cout << times.size() << " data points." << endl;
+
+    // sum all the times using TimeCode's own + operator
+    TimeCode sum;
+    for (const TimeCode& t : times) {
+        sum = sum + t;
+    }
+
+    // divide by count using TimeCode's own / operator
+    TimeCode average = sum / (double)times.size();
+
+    cout << "AVERAGE: " << average.ToString() << endl;
+	
 	file.close();
 
     return 0;
