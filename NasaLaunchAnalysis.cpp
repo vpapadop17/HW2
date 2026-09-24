@@ -48,15 +48,23 @@ int main() {
         cout << "Could not open file!" << endl;
         return 1;
     }
-
+	
+	vector<TimeCode> times;
     string line;
     getline(file, line);
     
-    while (getline(file, line)) {
-        cout << line << endl;
-    }
+	while (getline(file, line)) {
+		try {
+			TimeCode tc = parse_line(line);
+			cout << tc.ToString() << endl;
+			times.push_back(tc);
+		} catch (const invalid_argument& e) {
+			// no time in this row, skip it and move to the next line
+		}
+	}
+	
+	file.close();
 
-    file.close();
     return 0;
 }
 	
