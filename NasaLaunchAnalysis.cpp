@@ -50,6 +50,8 @@ int main() {
     }
 
     string line;
+    getline(file, line);
+    
     while (getline(file, line)) {
         cout << line << endl;
     }
